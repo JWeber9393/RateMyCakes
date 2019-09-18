@@ -1,0 +1,30 @@
+<form (submit)="onSubmit()">
+  <p> {{ newTask | json }} </p>
+  <input type="text" name="newCake.baker" [(ngModel)]="newCake.baker" />
+  <input type="text" name="newCake.imageUrl" [(ngModel)]="newCake.imageUrl" />
+  <input type="submit" value="Add Cake" />
+</form>
+<br>
+
+<button (click)='getCakesFromService()'>Show Cakes</button>
+
+<div *ngFor='let cake of cakes'>
+  <p>Baker: {{cake.baker}}</p>
+  <button (click)="showCake(cake)"><img heigh="100px" width="100px" src="{{cake.imageUrl}}" alt="{{cake.baker}}'s' cake"></button><br>
+  <button (click)="onDelete(cake)">Delete</button>
+
+  <form *ngIf="review" (submit)="onRate(cake)">
+    <input type="text" name="rater" [(ngModel)]="review.rater">
+    <input type="number" min="1" max="5" name="rating" [(ngModel)]="review.rating">
+    <textarea name="comment" [(ngModel)]="review.comment" cols="30" rows="10"
+      placeholder="Leave a Comment"></textarea>
+    <input type="submit" value="Rate!">
+  </form>
+  
+
+</div>
+
+<br>
+
+<app-cake *ngIf="viewCake" [cakeToShow]="viewCake"></app-cake>
+

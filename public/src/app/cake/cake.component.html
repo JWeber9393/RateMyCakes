@@ -1,0 +1,8 @@
+<p>{{cakeToShow.baker}}</p>
+<img height="200px" width="200px" src="{{cakeToShow.imageUrl}}" alt="{{cakeToShow.baker}}'s cake">
+<p>Average Rating: {{cakeRating}} stars</p>
+<p *ngFor="let review of cakeToShow.review">
+    Rater: {{review.rater}} <br>
+    Stars: {{review.rating}} <br>
+    Comment: {{review.comment}} <br>
+</p>
